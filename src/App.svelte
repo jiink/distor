@@ -1,5 +1,5 @@
 <script>
-  import devLogo from './assets/dev-logo.svg'
+  import devLogo from './assets/webcam.svg'
   import Counter from './lib/Counter.svelte'
 </script>
 
@@ -9,7 +9,7 @@
       <img src={devLogo} class="logo dev" alt="Svelte Logo" />
     </a>
   </div>
-  <h1>Svelte Website Template</h1>
+  <h1>Svelte Website Template. Will become... distor!</h1>
 
   <div class="card">
     <Counter />
