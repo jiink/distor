@@ -2,17 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./public/dev-logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Distor</title>
+    <!-- Main script for webcam -->
     <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
 
 
-  <!-- Style for the button -->  
+  <!-- Style for the webcam button -->  
   <style>
       a {
           padding: 10px;
-          background-color: orange;
+          background-color: rgb(229, 82, 82);
           color: white;
           text-decoration: none;
       }
@@ -25,6 +25,7 @@
 
     <!-- Webcam Creation & Button creation TEST -->
     <video id="webcam" autoplay playsinline width="800" height="600"></video>
+    
     <canvas id="canvas"></canvas>
     
     <a download onClick="takePicture()">SNAP</a>
