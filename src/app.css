@@ -15,6 +15,80 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body{
+  background-color: #1a1a1a;
+}
+
+/* slider style */
+.first_bar{
+  left: 600px;
+  appearance: auto;
+  width: 30%;
+  margin: 24% auto;
+  position: relative;
+}
+
+
+/* color change of slider */
+input[type="range"]::-moz-range-progress {
+  background-color: red;
+}
+
+#slider {
+  appearance: auto;
+  width: 100%;
+  height: 7px;
+  outline: none;
+  border-radius: 3px;
+}
+
+#slider::-webkit-slider-thumb{
+  appearance: none;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 3;
+  position: relative;
+}
+
+#selector{
+  height: 104px;
+  width: 48px;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.SelectBtn {
+  height: 80px;
+  width:  85px;
+  background-image: url(https://www.google.com/search/static/gs/animal/cover_images/m01zh5_cover.png);
+  background-size:contain;
+  position: inherit;
+  border-radius: 30%;
+  position: absolute;
+  bottom: 8px;
+}
+
+#SelectValue{
+  width: 48px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  background: #535bf2;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 45px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#SelectValue::after {
+  content: '';
+}
+
 a {
   border-radius: 25px;
   width: 75px;

@@ -20,6 +20,32 @@
 
   </head>
   <body>
+    
+      <!-- Slider Bar Creation TEST -->
+      <div class ="first_bar">
+        <input type="range" min="0" max="100" value="50" id="slider">
+        <div id="selector">
+          <div class="SelectBtn"></div>
+          <div id = "SelectValue"></div>
+        </div>
+  
+      </div>
+  
+      <!-- Small script, for Slider. -->
+      <script>
+        var slider = document.getElementById("slider");
+        var selector = document.getElementById("selector");
+        var SelectValue = document.getElementById("SelectValue");
+  
+        SelectValue.innerHTML = slider.value;
+  
+        slider.oninput = function() {
+        
+          SelectValue.innerHTML = this.value;  
+          selector.style.left = this.value + "%";
+        }
+      </script>
+    
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
 
