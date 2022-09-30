@@ -1,0 +1,28 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float bulge_x_pos = 0.0;
+uniform float bulge_y_pos = 0.0;
+uniform float pinch_strength = 0.7;
+
+//uniform vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
+void fragment(){
+	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
+	vec2 p = vec2(FRAGCOORD.x, FRAGCOORD.y) / iResolution - 0.5;
+	
+	// cartesian to polar coordinates
+	float r = length(vec2(p.x + bulge_x_pos, p.y + bulge_y_pos));
+	float a = atan(p.y + bulge_y_pos, p.x + bulge_x_pos);
+	
+	// distort
+	//r = r * r * 3.0; // bulge
+	//r = sqrt(r)*pinch_strength; // pinch
+	r = pow(r, pinch_strength) * (pinch_strength + 1.0);
+	
+	// polar to cartesian coordinates
+	p = r * vec2(cos(a) * 0.5, -sin(a) * 0.5);
+	
+	COLOR = texture(TEXTURE, vec2(p.x + 0.5 - bulge_x_pos * pinch_strength, p.y + 0.5 + bulge_y_pos * pinch_strength));   
+}"
