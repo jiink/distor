@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://html5webcam.gd" type="Script" id=1]
 [ext_resource path="res://testMaterial.tres" type="Material" id=2]
+[ext_resource path="res://distor_theme.tres" type="Theme" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
@@ -63,6 +64,7 @@ flags = 71
 [node name="testCamera" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = SubResource( 1 )
 myMat = ExtResource( 2 )
 
@@ -76,7 +78,7 @@ margin_bottom = 600.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 material = ExtResource( 2 )
-margin_right = 934.0
+margin_right = 813.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -89,73 +91,74 @@ script = ExtResource( 1 )
 texture = SubResource( 2 )
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-margin_left = 938.0
-margin_right = 942.0
+margin_left = 817.0
+margin_right = 821.0
 margin_bottom = 600.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 946.0
+margin_left = 825.0
 margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_right = 78.0
-margin_bottom = 20.0
-text = "edit mode"
+margin_right = 199.0
+margin_bottom = 14.0
+text = "             BINGUS MODE             "
 
 [node name="Labelled slider X" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 78.0
-margin_bottom = 58.0
+margin_top = 18.0
+margin_right = 199.0
+margin_bottom = 68.0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Labelled slider X"]
-margin_right = 78.0
+margin_right = 199.0
 margin_bottom = 14.0
 text = "X pos"
 align = 1
 
 [node name="XSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/Labelled slider X"]
 margin_top = 18.0
-margin_right = 78.0
-margin_bottom = 34.0
+margin_right = 199.0
+margin_bottom = 50.0
 min_value = -0.5
 max_value = 0.5
 step = 0.0
 
 [node name="Labelled slider Y" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 62.0
-margin_right = 78.0
-margin_bottom = 96.0
+margin_top = 72.0
+margin_right = 199.0
+margin_bottom = 122.0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Labelled slider Y"]
-margin_right = 78.0
+margin_right = 199.0
 margin_bottom = 14.0
 text = "Y pos"
 align = 1
 
 [node name="YSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/Labelled slider Y"]
 margin_top = 18.0
-margin_right = 78.0
-margin_bottom = 34.0
+margin_right = 199.0
+margin_bottom = 50.0
 min_value = -0.5
 max_value = 0.5
 step = 0.0
 
 [node name="Labelled slider S" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 100.0
-margin_right = 78.0
-margin_bottom = 134.0
+margin_top = 126.0
+margin_right = 199.0
+margin_bottom = 176.0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Labelled slider S"]
-margin_right = 78.0
+margin_right = 199.0
 margin_bottom = 14.0
+theme = ExtResource( 3 )
 text = "Strength"
 align = 1
 
 [node name="SSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/Labelled slider S"]
 margin_top = 18.0
-margin_right = 78.0
-margin_bottom = 34.0
+margin_right = 199.0
+margin_bottom = 50.0
 min_value = 0.2
 max_value = 2.0
 step = 0.0
