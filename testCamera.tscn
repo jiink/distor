@@ -113,7 +113,7 @@ margin_bottom = 68.0
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Labelled slider X"]
 margin_right = 199.0
 margin_bottom = 14.0
-text = "X pos"
+text = "X position"
 align = 1
 
 [node name="XSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/Labelled slider X"]
@@ -163,6 +163,12 @@ min_value = 0.2
 max_value = 2.0
 step = 0.0
 value = 0.2
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer"]
+margin_top = 180.0
+margin_right = 199.0
+margin_bottom = 212.0
+text = "Sus Mode"
 
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/Labelled slider X/XSlider" to="." method="_on_XSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/Labelled slider Y/YSlider" to="." method="_on_YSlider_value_changed"]
