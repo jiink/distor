@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moai.jpg-ecc0fef77a53a152dd6a968b4982d801.stex"
+path="res://.import/smily_disabled.png-cd8b1080c54804b3cf4579fd35b0397e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://moai.jpg"
-dest_files=[ "res://.import/moai.jpg-ecc0fef77a53a152dd6a968b4982d801.stex" ]
+source_file="res://Assets/smily_disabled.png"
+dest_files=[ "res://.import/smily_disabled.png-cd8b1080c54804b3cf4579fd35b0397e.stex" ]
 
 [params]
 

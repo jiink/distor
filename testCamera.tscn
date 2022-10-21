@@ -2,14 +2,14 @@
 
 [ext_resource path="res://html5webcam.gd" type="Script" id=1]
 [ext_resource path="res://testMaterial.tres" type="Material" id=2]
-[ext_resource path="res://distor_theme.tres" type="Theme" id=3]
-[ext_resource path="res://DestroyASAP.gd" type="Script" id=4]
-[ext_resource path="res://EffectDropdownController.gd" type="Script" id=5]
-[ext_resource path="res://smily_disabled.png" type="Texture" id=6]
-[ext_resource path="res://moai.jpg" type="Texture" id=7]
-[ext_resource path="res://smily_highlight.png" type="Texture" id=8]
-[ext_resource path="res://PinchParamController.gd" type="Script" id=9]
-[ext_resource path="res://StretchParamController.gd" type="Script" id=10]
+[ext_resource path="res://Assets/distor_theme.tres" type="Theme" id=3]
+[ext_resource path="res://Scripts/DestroyASAP.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/EffectDropdownController.gd" type="Script" id=5]
+[ext_resource path="res://Assets/smily_disabled.png" type="Texture" id=6]
+[ext_resource path="res://Assets/moai.jpg" type="Texture" id=7]
+[ext_resource path="res://Assets/smily_highlight.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/PinchParamController.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/StretchParamController.gd" type="Script" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer

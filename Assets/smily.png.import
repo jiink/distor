@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/smily_highlight.png-4cae29cc217f58e643d3e16e22933d14.stex"
+path="res://.import/smily.png-e31f3fbf1307ea28012a36a64d907ba1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://smily_highlight.png"
-dest_files=[ "res://.import/smily_highlight.png-4cae29cc217f58e643d3e16e22933d14.stex" ]
+source_file="res://Assets/smily.png"
+dest_files=[ "res://.import/smily.png-e31f3fbf1307ea28012a36a64d907ba1.stex" ]
 
 [params]
 
