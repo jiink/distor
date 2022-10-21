@@ -1,9 +1,9 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://new_shader.tres" type="Shader" id=1]
+[ext_resource path="res://Shaders/new_shader.tres" type="Shader" id=1]
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/bulge_x_pos = 0.0
-shader_param/bulge_y_pos = 0.0
-shader_param/pinch_strength = 0.7
+shader_param/bulge_x_pos = -0.044
+shader_param/bulge_y_pos = -0.404
+shader_param/pinch_strength = 0.683

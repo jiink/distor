@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://html5webcam.gd" type="Script" id=1]
 [ext_resource path="res://testMaterial.tres" type="Material" id=2]
 [ext_resource path="res://distor_theme.tres" type="Theme" id=3]
+[ext_resource path="res://DestroyASAP.gd" type="Script" id=4]
+[ext_resource path="res://EffectDropdownController.gd" type="Script" id=5]
+[ext_resource path="res://smily_disabled.png" type="Texture" id=6]
+[ext_resource path="res://moai.jpg" type="Texture" id=7]
+[ext_resource path="res://smily_highlight.png" type="Texture" id=8]
+[ext_resource path="res://PinchParamController.gd" type="Script" id=9]
+[ext_resource path="res://StretchParamController.gd" type="Script" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
@@ -39,22 +46,6 @@ func _on_fill_pressed():
 	else:
 		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		
-
-
-
-func _on_XSlider_value_changed(new_x_pos):
-	var tr = get_node(textureRect) as TextureRect
-	tr.material.set_shader_param(\"bulge_x_pos\", new_x_pos)
-
-
-func _on_YSlider_value_changed(new_y_pos):
-	var tr = get_node(textureRect) as TextureRect
-	tr.material.set_shader_param(\"bulge_y_pos\", new_y_pos)
-
-
-func _on_SSlider_value_changed(new_strength):
-	var tr = get_node(textureRect) as TextureRect
-	tr.material.set_shader_param(\"pinch_strength\", new_strength)
 "
 
 [sub_resource type="ImageTexture" id=2]
@@ -78,7 +69,7 @@ margin_bottom = 600.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 material = ExtResource( 2 )
-margin_right = 813.0
+margin_right = 374.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -90,86 +81,152 @@ flip_h = true
 script = ExtResource( 1 )
 texture = SubResource( 2 )
 
+[node name="TestureRect" type="TextureRect" parent="HBoxContainer"]
+material = ExtResource( 2 )
+margin_left = 378.0
+margin_right = 890.0
+margin_bottom = 600.0
+texture = ExtResource( 7 )
+stretch_mode = 6
+script = ExtResource( 4 )
+
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-margin_left = 817.0
-margin_right = 821.0
+margin_left = 894.0
+margin_right = 898.0
 margin_bottom = 600.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 825.0
+margin_left = 902.0
 margin_right = 1024.0
 margin_bottom = 600.0
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_right = 199.0
-margin_bottom = 14.0
-text = "             BINGUS MODE             "
+[node name="Button" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 122.0
+margin_bottom = 48.0
+text = "
+Configuration
+"
+align = 1
 
-[node name="Labelled slider X" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 199.0
-margin_bottom = 68.0
+[node name="EffectDropdown" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 122.0
+margin_bottom = 84.0
+script = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Labelled slider X"]
-margin_right = 199.0
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectDropdown"]
+margin_top = 9.0
+margin_right = 35.0
+margin_bottom = 23.0
+text = "Effect"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/EffectDropdown"]
+margin_left = 39.0
+margin_right = 122.0
+margin_bottom = 32.0
+text = "Pinch"
+icon = ExtResource( 6 )
+align = 1
+items = [ "Pinch", ExtResource( 6 ), false, 0, null, "Stretch", ExtResource( 8 ), false, 1, null ]
+selected = 0
+
+[node name="EffectParams" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 88.0
+margin_right = 122.0
+margin_bottom = 246.0
+
+[node name="Pinch" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams"]
+margin_right = 122.0
+margin_bottom = 158.0
+script = ExtResource( 9 )
+
+[node name="Labelled slider X" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch"]
+margin_right = 122.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X"]
+margin_right = 122.0
 margin_bottom = 14.0
 text = "X position"
 align = 1
 
-[node name="XSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/Labelled slider X"]
+[node name="XSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X"]
 margin_top = 18.0
-margin_right = 199.0
+margin_right = 122.0
 margin_bottom = 50.0
 min_value = -0.5
 max_value = 0.5
 step = 0.0
 
-[node name="Labelled slider Y" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 72.0
-margin_right = 199.0
-margin_bottom = 122.0
+[node name="Labelled slider Y" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch"]
+margin_top = 54.0
+margin_right = 122.0
+margin_bottom = 104.0
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Labelled slider Y"]
-margin_right = 199.0
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y"]
+margin_right = 122.0
 margin_bottom = 14.0
 text = "Y pos"
 align = 1
 
-[node name="YSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/Labelled slider Y"]
+[node name="YSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y"]
 margin_top = 18.0
-margin_right = 199.0
+margin_right = 122.0
 margin_bottom = 50.0
 min_value = -0.5
 max_value = 0.5
 step = 0.0
 
-[node name="Labelled slider S" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 126.0
-margin_right = 199.0
-margin_bottom = 176.0
+[node name="Labelled slider S" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch"]
+margin_top = 108.0
+margin_right = 122.0
+margin_bottom = 158.0
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Labelled slider S"]
-margin_right = 199.0
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S"]
+margin_right = 122.0
 margin_bottom = 14.0
 theme = ExtResource( 3 )
 text = "Strength"
 align = 1
 
-[node name="SSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/Labelled slider S"]
+[node name="SSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S"]
 margin_top = 18.0
-margin_right = 199.0
+margin_right = 122.0
 margin_bottom = 50.0
 min_value = 0.2
 max_value = 2.0
 step = 0.0
 value = 0.2
 
-[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer"]
-margin_top = 180.0
-margin_right = 199.0
+[node name="Stretch" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams"]
+visible = false
+margin_top = 162.0
+margin_right = 122.0
 margin_bottom = 212.0
-text = "Sus Mode"
+script = ExtResource( 10 )
 
-[connection signal="value_changed" from="HBoxContainer/VBoxContainer/Labelled slider X/XSlider" to="." method="_on_XSlider_value_changed"]
-[connection signal="value_changed" from="HBoxContainer/VBoxContainer/Labelled slider Y/YSlider" to="." method="_on_YSlider_value_changed"]
-[connection signal="value_changed" from="HBoxContainer/VBoxContainer/Labelled slider S/SSlider" to="." method="_on_SSlider_value_changed"]
+[node name="Labelled slider P" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Stretch"]
+margin_right = 122.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectParams/Stretch/Labelled slider P"]
+margin_right = 122.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+text = "Position"
+align = 1
+
+[node name="PSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/EffectParams/Stretch/Labelled slider P"]
+margin_top = 18.0
+margin_right = 122.0
+margin_bottom = 50.0
+min_value = 0.4
+max_value = 3.0
+step = 0.0
+value = 0.4
+
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/EffectDropdown/OptionButton" to="HBoxContainer/VBoxContainer/EffectDropdown" method="_on_OptionButton_item_selected"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X/XSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_XSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_YSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S/SSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_SSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Stretch/Labelled slider P/PSlider" to="HBoxContainer/VBoxContainer/EffectParams/Stretch" method="_on_PSlider_value_changed"]
