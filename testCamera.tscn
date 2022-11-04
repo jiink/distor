@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://html5webcam.gd" type="Script" id=1]
 [ext_resource path="res://testMaterial.tres" type="Material" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scripts/StretchParamController.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/AnimatedSlider.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/MirrorParamController.gd" type="Script" id=12]
+[ext_resource path="res://Assets/backgroundtile.png" type="Texture" id=13]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
@@ -50,11 +51,18 @@ func _on_fill_pressed():
 		
 "
 
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 13 )
+region_rect = Rect2( 0, 0, 64, 64 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [sub_resource type="ImageTexture" id=2]
 flags = 71
 flags = 71
 
 [sub_resource type="ImageTexture" id=3]
+size = Vector2( 16, 16 )
 
 [node name="testCamera" type="MarginContainer"]
 anchor_right = 1.0
@@ -66,6 +74,7 @@ myMat = ExtResource( 2 )
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
+custom_styles/panel = SubResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1024.0
@@ -73,7 +82,7 @@ margin_bottom = 600.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 material = ExtResource( 2 )
-margin_right = 374.0
+margin_right = 248.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -87,46 +96,47 @@ texture = SubResource( 2 )
 
 [node name="TestureRect" type="TextureRect" parent="HBoxContainer"]
 material = ExtResource( 2 )
-margin_left = 378.0
-margin_right = 890.0
+margin_left = 252.0
+margin_right = 764.0
 margin_bottom = 600.0
 texture = ExtResource( 7 )
 stretch_mode = 6
 script = ExtResource( 4 )
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-margin_left = 894.0
-margin_right = 898.0
+margin_left = 768.0
+margin_right = 772.0
 margin_bottom = 600.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 902.0
+margin_left = 776.0
 margin_right = 1024.0
 margin_bottom = 600.0
+size_flags_horizontal = 3
 
 [node name="Button" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_right = 122.0
-margin_bottom = 48.0
+margin_right = 248.0
+margin_bottom = 72.0
 text = "
 Configuration
 "
 align = 1
 
 [node name="EffectDropdown" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 52.0
-margin_right = 122.0
-margin_bottom = 84.0
+margin_top = 76.0
+margin_right = 248.0
+margin_bottom = 108.0
 script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectDropdown"]
-margin_top = 9.0
-margin_right = 35.0
-margin_bottom = 23.0
+margin_top = 5.0
+margin_right = 63.0
+margin_bottom = 27.0
 text = "Effect"
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/EffectDropdown"]
-margin_left = 39.0
-margin_right = 122.0
+margin_left = 67.0
+margin_right = 150.0
 margin_bottom = 32.0
 text = "Pinch"
 icon = ExtResource( 6 )
@@ -135,48 +145,49 @@ items = [ "Pinch", ExtResource( 6 ), false, 0, null, "Stretch", ExtResource( 8 )
 selected = 0
 
 [node name="EffectParams" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 88.0
-margin_right = 122.0
-margin_bottom = 300.0
+margin_top = 112.0
+margin_right = 248.0
+margin_bottom = 294.0
 
 [node name="Pinch" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams"]
-margin_right = 122.0
-margin_bottom = 158.0
+margin_right = 248.0
+margin_bottom = 182.0
 script = ExtResource( 9 )
 
 [node name="Labelled slider X" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch"]
-margin_right = 122.0
-margin_bottom = 50.0
+margin_right = 248.0
+margin_bottom = 58.0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X"]
-margin_right = 122.0
-margin_bottom = 14.0
+margin_right = 248.0
+margin_bottom = 22.0
 text = "X position"
 align = 1
 
 [node name="XSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X"]
-margin_top = 18.0
-margin_right = 122.0
-margin_bottom = 50.0
+margin_top = 26.0
+margin_right = 248.0
+margin_bottom = 58.0
 min_value = -0.5
 max_value = 0.5
 step = 0.0
+script = ExtResource( 11 )
 
 [node name="Labelled slider Y" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch"]
-margin_top = 54.0
-margin_right = 122.0
-margin_bottom = 104.0
+margin_top = 62.0
+margin_right = 248.0
+margin_bottom = 120.0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y"]
-margin_right = 122.0
-margin_bottom = 14.0
+margin_right = 248.0
+margin_bottom = 22.0
 text = "Y pos"
 align = 1
 
 [node name="YSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y"]
-margin_top = 18.0
-margin_right = 122.0
-margin_bottom = 50.0
+margin_top = 26.0
+margin_right = 248.0
+margin_bottom = 58.0
 custom_icons/grabber_highlight = SubResource( 3 )
 min_value = -0.5
 max_value = 0.5
@@ -184,25 +195,27 @@ step = 0.0
 script = ExtResource( 11 )
 
 [node name="Labelled slider S" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch"]
-margin_top = 108.0
-margin_right = 122.0
-margin_bottom = 158.0
+margin_top = 124.0
+margin_right = 248.0
+margin_bottom = 182.0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S"]
-margin_right = 122.0
-margin_bottom = 14.0
+margin_right = 248.0
+margin_bottom = 22.0
 theme = ExtResource( 3 )
 text = "Strength"
 align = 1
 
 [node name="SSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S"]
-margin_top = 18.0
-margin_right = 122.0
-margin_bottom = 50.0
+margin_top = 26.0
+margin_right = 248.0
+margin_bottom = 58.0
+custom_icons/grabber_highlight = ExtResource( 8 )
 min_value = 0.2
 max_value = 2.0
 step = 0.0
 value = 0.2
+script = ExtResource( 11 )
 
 [node name="Stretch" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams"]
 visible = false
@@ -230,35 +243,42 @@ min_value = 0.4
 max_value = 3.0
 step = 0.0
 value = 0.4
+script = ExtResource( 11 )
 
 [node name="Mirror" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams"]
-margin_top = 162.0
-margin_right = 122.0
-margin_bottom = 212.0
+visible = false
+margin_top = 186.0
+margin_right = 248.0
+margin_bottom = 244.0
 script = ExtResource( 12 )
 
 [node name="Labelled slider P" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Mirror"]
-margin_right = 122.0
-margin_bottom = 50.0
+margin_right = 248.0
+margin_bottom = 58.0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectParams/Mirror/Labelled slider P"]
-margin_right = 122.0
-margin_bottom = 14.0
+margin_right = 248.0
+margin_bottom = 22.0
 theme = ExtResource( 3 )
 text = "Direction"
 align = 1
 
 [node name="DSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/EffectParams/Mirror/Labelled slider P"]
-margin_top = 18.0
-margin_right = 122.0
-margin_bottom = 50.0
+margin_top = 26.0
+margin_right = 248.0
+margin_bottom = 58.0
 max_value = 1.0
 step = 0.0
+script = ExtResource( 11 )
 
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/EffectDropdown/OptionButton" to="HBoxContainer/VBoxContainer/EffectDropdown" method="_on_OptionButton_item_selected"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X/XSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_XSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X/XSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X/XSlider" method="_on_YSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_YSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" method="_on_YSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S/SSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_SSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S/SSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S/SSlider" method="_on_YSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Stretch/Labelled slider P/PSlider" to="HBoxContainer/VBoxContainer/EffectParams/Stretch" method="_on_PSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Stretch/Labelled slider P/PSlider" to="HBoxContainer/VBoxContainer/EffectParams/Stretch/Labelled slider P/PSlider" method="_on_YSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Mirror/Labelled slider P/DSlider" to="HBoxContainer/VBoxContainer/EffectParams/Mirror" method="_on_DSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Mirror/Labelled slider P/DSlider" to="HBoxContainer/VBoxContainer/EffectParams/Mirror/Labelled slider P/DSlider" method="_on_YSlider_value_changed"]

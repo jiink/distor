@@ -1,14 +1,22 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=7 format=2]
 
 [ext_resource path="res://Assets/smily.png" type="Texture" id=1]
 [ext_resource path="res://Assets/smily_disabled.png" type="Texture" id=2]
 [ext_resource path="res://Assets/smily_highlight.png" type="Texture" id=3]
+[ext_resource path="res://Assets/FontQuest.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.603922, 0.0784314, 0.0784314, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+outline_size = 2
+outline_color = Color( 0.141176, 0.0901961, 0.396078, 1 )
+font_data = ExtResource( 4 )
 
 [resource]
 Button/styles/normal = SubResource( 1 )
 HSlider/icons/grabber = ExtResource( 1 )
 HSlider/icons/grabber_disabled = ExtResource( 2 )
 HSlider/icons/grabber_highlight = ExtResource( 3 )
+Label/fonts/font = SubResource( 2 )

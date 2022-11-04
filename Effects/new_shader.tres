@@ -9,8 +9,13 @@ uniform float pinch_strength = 0.7;
 
 //uniform vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
 void fragment(){
-	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
-	vec2 p = vec2(FRAGCOORD.x, FRAGCOORD.y) / iResolution - 0.5;
+	//vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
+	//vec2 p = vec2(FRAGCOORD.x, FRAGCOORD.y) / iResolution - 0.5;
+	float dist_weight = distance(UV, vec2(0.5)) * 2.0;
+	float pinch_strength_m = pinch_strength;
+	//float pinch_strength_m = pinch_strength * (1.0 - dist_weight);
+	
+	vec2 p = vec2(1.0 - UV.x - 0.5, 1.0 - UV.y - 0.5);
 	
 	// cartesian to polar coordinates
 	float r = length(vec2(p.x + bulge_x_pos, p.y + bulge_y_pos));
@@ -19,7 +24,7 @@ void fragment(){
 	// distort
 	//r = r * r * 3.0; // bulge
 	//r = sqrt(r)*pinch_strength; // pinch
-	r = pow(r, pinch_strength) * (pinch_strength + 1.0);
+	r = pow(r, pinch_strength_m) * (pinch_strength_m + 1.0);
 	
 	// polar to cartesian coordinates
 	p = r * vec2(cos(a) * 0.5, -sin(a) * 0.5);
