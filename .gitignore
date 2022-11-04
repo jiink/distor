@@ -3,7 +3,6 @@
 export.cfg
 # export_presets.cfg
 
-out/
 public/
 # tools/
 # bin/
