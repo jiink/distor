@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://html5webcam.gd" type="Script" id=1]
 [ext_resource path="res://testMaterial.tres" type="Material" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/smily_highlight.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/PinchParamController.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/StretchParamController.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/AnimatedSlider.gd" type="Script" id=11]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
@@ -51,6 +52,8 @@ func _on_fill_pressed():
 [sub_resource type="ImageTexture" id=2]
 flags = 71
 flags = 71
+
+[sub_resource type="ImageTexture" id=3]
 
 [node name="testCamera" type="MarginContainer"]
 anchor_right = 1.0
@@ -173,9 +176,11 @@ align = 1
 margin_top = 18.0
 margin_right = 122.0
 margin_bottom = 50.0
+custom_icons/grabber_highlight = SubResource( 3 )
 min_value = -0.5
 max_value = 0.5
 step = 0.0
+script = ExtResource( 11 )
 
 [node name="Labelled slider S" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Pinch"]
 margin_top = 108.0
@@ -228,5 +233,6 @@ value = 0.4
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/EffectDropdown/OptionButton" to="HBoxContainer/VBoxContainer/EffectDropdown" method="_on_OptionButton_item_selected"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X/XSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_XSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_YSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" method="_on_YSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S/SSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_SSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Stretch/Labelled slider P/PSlider" to="HBoxContainer/VBoxContainer/EffectParams/Stretch" method="_on_PSlider_value_changed"]
