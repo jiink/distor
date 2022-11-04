@@ -1,8 +1,9 @@
 extends HBoxContainer
 
-enum { PINCH, STRETCH }
+enum { PINCH, STRETCH, MIRROR }
 var shaderTable = ["res://Effects/new_shader.tres",
-					"res://Effects/stretch.gdshader"]
+					"res://Effects/stretch.gdshader",
+					"res://Effects/mirror_shader.tres"]
 
 var mainController
 var textureRect

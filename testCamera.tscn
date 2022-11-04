@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://html5webcam.gd" type="Script" id=1]
 [ext_resource path="res://testMaterial.tres" type="Material" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scripts/PinchParamController.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/StretchParamController.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/AnimatedSlider.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/MirrorParamController.gd" type="Script" id=12]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends MarginContainer
@@ -130,13 +131,13 @@ margin_bottom = 32.0
 text = "Pinch"
 icon = ExtResource( 6 )
 align = 1
-items = [ "Pinch", ExtResource( 6 ), false, 0, null, "Stretch", ExtResource( 8 ), false, 1, null ]
+items = [ "Pinch", ExtResource( 6 ), false, 0, null, "Stretch", ExtResource( 8 ), false, 1, null, "Mirror", null, false, 2, null ]
 selected = 0
 
 [node name="EffectParams" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 margin_top = 88.0
 margin_right = 122.0
-margin_bottom = 246.0
+margin_bottom = 300.0
 
 [node name="Pinch" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams"]
 margin_right = 122.0
@@ -230,9 +231,34 @@ max_value = 3.0
 step = 0.0
 value = 0.4
 
+[node name="Mirror" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams"]
+margin_top = 162.0
+margin_right = 122.0
+margin_bottom = 212.0
+script = ExtResource( 12 )
+
+[node name="Labelled slider P" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/EffectParams/Mirror"]
+margin_right = 122.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/EffectParams/Mirror/Labelled slider P"]
+margin_right = 122.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+text = "Direction"
+align = 1
+
+[node name="DSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/EffectParams/Mirror/Labelled slider P"]
+margin_top = 18.0
+margin_right = 122.0
+margin_bottom = 50.0
+max_value = 1.0
+step = 0.0
+
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/EffectDropdown/OptionButton" to="HBoxContainer/VBoxContainer/EffectDropdown" method="_on_OptionButton_item_selected"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider X/XSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_XSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_YSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider Y/YSlider" method="_on_YSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Pinch/Labelled slider S/SSlider" to="HBoxContainer/VBoxContainer/EffectParams/Pinch" method="_on_SSlider_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Stretch/Labelled slider P/PSlider" to="HBoxContainer/VBoxContainer/EffectParams/Stretch" method="_on_PSlider_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/EffectParams/Mirror/Labelled slider P/DSlider" to="HBoxContainer/VBoxContainer/EffectParams/Mirror" method="_on_DSlider_value_changed"]

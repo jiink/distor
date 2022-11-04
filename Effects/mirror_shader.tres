@@ -1,0 +1,29 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+// UNIFORMS
+uniform float whichSide = 0.0;
+
+
+void fragment() {
+	// RED, GREEN, BLUE , ALPHA
+	// UV : 2 cords, x y (UV can also do arithmitec)
+	vec2 editedUV = vec2(UV.x,  UV.y);
+	
+	if (whichSide < 0.5) {
+		if ( UV.x > 0.5) {
+			editedUV.x = 1.0 - editedUV.x;
+		}
+	} else {
+		if (UV.x < 0.5){
+			editedUV.x = 1.0 - editedUV.x;
+		}
+	}
+	
+	// Uniforms, allows you to control outside of the shader
+	COLOR = texture(TEXTURE, editedUV);
+	
+	
+	
+}"
